@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>.:: PhotoEvent ::.</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ base_url() }}/node_modules/materialize-css/dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{ base_url() }}/node_modules/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <!--Sweet Alert-->
+    <link rel="stylesheet" href="{{ base_url() }}/node_modules/sweetalert2/dist/sweetalert2.css">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ base_url() }}/node_modules/owl.carousel/dist/assets/owl.carousel.css">
+    <link rel="stylesheet" href="{{ base_url() }}/node_modules/owl.carousel/dist/assets/owl.theme.green.css">
+
+    <link href="{{ base_url() }}/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div class="ajaxload" id="loader-modal">
+    <img src="{{ base_url() }}/assets/img/ajaxload.svg" alt="">
+</div>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{{ path_for('photoevent.panel.index') }}">Painel</a></li>
+            <li><a href="{{ path_for('photoevent.home.index') }}">Publicação</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container{% block fluid %}{% endblock %}">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+<script>
+    window.photoevent = window.photoevent || {};
+    window.photoevent.urlbase = "{{ base_url() }}";
+</script>
+
+<!--  Scripts-->
+<script src="{{ base_url() }}/node_modules/jquery/dist/jquery.js"></script>
+<script src="{{ base_url() }}/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+<!-- Sweet Dialog -->
+<script src="{{ base_url() }}/node_modules/sweetalert2/dist/sweetalert2.js"></script>
+
+<!-- BlockUI -->
+<script src="{{ base_url() }}/vendor/jquery-blockui/jquery.blockUI.js"></script>
+
+<!-- Owl Carousel -->
+<script src="{{ base_url() }}/node_modules/owl.carousel/dist/owl.carousel.js"></script>
+
+<!-- PhotoEvent Service -->
+<script src="{{ base_url() }}/assets/js/service/dist/service.photoevent.min.js"></script>
+
+{% block script %}{% endblock %}
+
+</body>
+</html>

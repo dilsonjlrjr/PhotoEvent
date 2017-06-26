@@ -1,0 +1,102 @@
+{% extends "Layout/default.twig" %}
+
+{% block content %}
+    <div class="section">
+        <div class="had-container">
+            <h1 class="header center orange-text">Ajuste da Foto</h1>
+
+            <div class="row center">
+                <h5 class="header col s12 light">
+                    Vamos agora ajustar sua foto, mantenha a foto desejada no centro do quadrado ou ajuste pela pontas
+                    da
+                    imagem.
+                    <br>
+                    <small>Dica: use o SHIFT para o ajuste mantendo a proporção.</small>
+                </h5>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m12 l7">
+                    <div class="component">
+                        <div class="overlay">
+                            <div class="overlay-inner">
+                            </div>
+                        </div>
+                        <img class="resize-image" src="{{ photobase64 }}" alt="image for resizing">
+                        <input class="js-crop" type="hidden" id="image-hidden" name="image-hidden"/>
+                    </div>
+                </div>
+                <div class="col s12 m12 l5">
+                    <h5 class="header col s12 light">
+                        Selecione o modelo
+                    </h5>
+
+                    <div class="row">
+                        {% if arrayTemplate|length > 0 %}
+                            {% set bFlag = "checked" %}
+                            {% for key, template in arrayTemplate %}
+                            <div class="col s6">
+                                <div class="input-field col s12">
+                                    <input name="option-template" {{ bFlag }} data-namespace="{{ template.templateClass }}" type="radio" id="{{ key }}" value="{{ template.templateClass }}"/>
+                                    <label for="{{ key }}"><img title="{{ template.templateName }}" src="{{ template.templateImgBase64 }}"/></label>
+
+                                    {% set bFlag = "" %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col s6">
+                                <h5 class="header col s12 light">
+                                    <small>Sem template criado.</small>
+                                </h5>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col l6 s12 m12" style="margin-top: 10px;">
+                            {% if arrayTemplate|length > 0 %}
+                            <a class="waves-effect waves-light btn col s12" id="create-image">
+                                <i class="fa fa-picture-o left"></i>Criar Imagem
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="col l6 s12 m12" style="margin-top: 10px;">
+                            <a href="{{ path_for('photoevent.photo.index') }}"
+                               class="waves-effect blue waves-light btn col s12 l12">
+                                <i class="fa fa-camera left"></i>Tirar outra foto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-preview" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 class="orange-text">Veja como ficou sua foto...</h4>
+
+                <div class="row">
+                    <div class="col l6">
+                        <img class="responsive-img" id="img-preview-photo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
+                    Fechar
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script language="javascript" src="{{ base_url() }}/vendor/component-crop/component.js"></script>
+    <script language="javascript" src="{{ base_url() }}/assets/js/pages/photo.crop.js/dist/photo.crop.js.min.js"></script>
+{% endblock %}
+
+{% block css %}
+    <link href="{{ base_url() }}/vendor/component-crop/component.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+{% endblock %}

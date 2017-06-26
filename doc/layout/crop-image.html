@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>SigUPhotoEvent</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/font-awesome.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/component.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Painel</a></li>
+            <li><a href="#">Publicação</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="section">
+    <div class="had-container">
+        <h1 class="header center orange-text">Ajuste da Foto</h1>
+
+        <div class="row center">
+            <h5 class="header col s12 light">
+                Vamos agora ajustar sua foto, mantenha a foto desejada no centro do quadrado ou ajuste pela pontas da
+                imagem.
+                <br>
+                <small>Dica: use o SHIFT para o ajuste mantendo a proporção.</small>
+            </h5>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l7">
+                <div class="component">
+                    <div class="overlay">
+                        <div class="overlay-inner">
+                        </div>
+                    </div>
+                    <!-- This image must be on the same domain as the demo or it will not work on a local file system -->
+                    <!-- http://en.wikipedia.org/wiki/Cross-origin_resource_sharing -->
+                    <img class="resize-image" src="img/866.jpg" alt="image for resizing">
+                </div>
+            </div>
+            <div class="col s12 m12 l5">
+                <h5 class="header col s12 light">
+                    Selecione o modelo
+                </h5>
+
+                <div class="row">
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <input name="group1" type="radio" id="test1" checked />
+                            <label for="test1"><img src="img/template-2.png" /></label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <input name="group1" type="radio" id="test2" />
+                            <label for="test2"><img src="img/template-1.png" /></label>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col l6 s12 m12" style="margin-top: 10px;">
+                        <a class="waves-effect waves-light btn col s12 js-crop">
+                            <i class="fa fa-picture-o left"></i>Criar Imagem
+                        </a>
+                    </div>
+                    <div class="col l6 s12 m12" style="margin-top: 10px;">
+                        <a href="select-photo.html" class="waves-effect blue waves-light btn col s12 l12">
+                            <i class="fa fa-camera left"></i>Tirar outra foto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Scripts-->
+<script src="js/vendor/jquery-2.1.4.min.js"></script>
+<script src="js/vendor/materialize.min.js"></script>
+<script src="js/vendor/component.js"></script>
+</body>
+</html>

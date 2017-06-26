@@ -1,0 +1,27 @@
+{% extends "Layout/default.twig" %}
+
+{% block content %}
+    <br><br>
+
+    <h1 class="header center orange-text">Seleção da Foto</h1>
+
+    <div class="row center">
+        <h5 class="header col s12 light">
+            Selecione uma foto do seu computador, no formato jpeg ou png.
+        </h5>
+    </div>
+    <div class="row center">
+        <a href="#" id="download-button"
+           class="btn-large waves-effect waves-light orange">
+            <i class="fa fa-camera left"></i> Selecionar foto
+        </a>
+    </div>
+
+    <form method="post" name="form-send-photo" id="form-send-photo" enctype="multipart/form-data" action="{{ path_for('photoevent.photo.crop') }}">
+        <input type="file" id="file-input-photo" name="file-input-photo" class="hide" accept="image/*"/>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ base_url() }}/assets/js/pages/photo.index.js/dist/photo.index.js.min.js"></script>
+{% endblock %}

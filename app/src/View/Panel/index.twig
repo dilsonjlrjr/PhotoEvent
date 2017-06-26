@@ -1,0 +1,75 @@
+{% extends 'Layout/default.twig' %}
+
+{% block content %}
+    <style>
+
+        .carrousel-photos {
+            margin-top: 40px;
+        }
+
+        #carrousel-photos .item {
+            margin: 3px;
+        }
+
+        #carrousel-photos .item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="had-container">
+            {% if arrayPhotos|length > 0 %}
+                <h1 class="header center orange-text">Quem passou por aqui!</h1>
+                <div class="valign-wrapper carrousel-photos">
+                    <div id="carrousel-photos" class="owl-carousel owl-theme">
+                        {% for photos in arrayPhotos %}
+                            <div class="item"><img src="{{ base_url() }}/{{ dirsave }}/{{ photos.filename }}" alt=""></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <br><br>
+                <h1 class="header center orange-text">Sem fotos para exibir</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">
+                        Que tal publicar uma foto?
+                    </h5>
+                </div>
+                <div class="row center">
+                    <a href="{{ path_for('photoevent.photo.index') }}"
+                       id="download-button" class="btn-large waves-effect waves-light orange">
+                        Iniciar
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script language="javascript">
+
+        $(document).ready(function () {
+
+            $("#index-banner").height($(window).height() - $("nav[role=navigation]").height() - $("h1.header").height());
+
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:10,
+                nav:true,
+                items: 3,
+                center: true,
+                autoWidth: true,
+                autoplay: true
+            })
+
+        });
+
+    </script>
+{% endblock %}
+
+{% block fluid %}
+-fluid
+{% endblock %}
