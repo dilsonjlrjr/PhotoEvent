@@ -1,0 +1,104 @@
+{% extends "Layout/default.twig" %}
+
+{% block css %}
+    <style>
+        .btn-floating.halfway-fab {
+            position: absolute;
+            right: 24px;
+            bottom: 15px;
+        }
+    </style>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ base_url() }}/assets/js/pages/photo.instagram.js/dist/photo.instagram.js.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="header center orange-text">Busca de foto pelo Instagram</h1>
+
+    <div class="row center">
+        <h5 class="header col s12 light">
+            Digite o nome da hashtag da sua imagem e clique em pesquisar.
+        </h5>
+    </div>
+
+    <div class="row center">
+        <div class="col s12">
+            <div class="row center">
+                <div class="input-field col s12 m8 l9">
+                    <input id="hashtag-instagram" type="text">
+                    <label class="active" for="hashtag-instagram">Hashtag (Ao digitar exclua o "#")</label>
+                </div>
+
+                <div class="col s12 m4 l3 center">
+                    <button class="btn btn-large waves-effect waves-light" type="button" id="btn-hashtag-instagram">Pesquisar
+                        <i class="fa fa-search right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5 class="hide" id="title-media">Principais Publicações</h5>
+        <div class="col l12" id="list-photos-instagram-media"></div>
+
+        <h5 class="hide" id="title-top-posts">Publicações recentes</h5>
+        <div class="col l12" id="list-photos-instagram-top-posts"></div>
+    </div>
+
+    <div class="row hide" id="div-loading-more">
+        <div class="s12 l12 m12 center">
+            <a class="waves-effect waves-light btn" id="btn-loading-more">CARREGAR MAIS</a>
+        </div>
+    </div>
+
+    <div class="row center hide" id="loading">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" name="form-send-photo" id="form-send-photo" action="{{ path_for('photoevent.photo.noupload.crop') }}">
+        <input type="hidden" id="file-input-photo" name="file-input-photo" class="hide" />
+    </form>
+{% endblock %}
