@@ -40,6 +40,7 @@ AjaxSend.prototype.send = function(configuration) {
         contentType: settings.contentType,
         processData: settings.processData,
         cache: settings.cache,
+        crossDomain: true,
         beforeSend: function () {
             if (settings.show === undefined) {
                 if (!settings.block) {

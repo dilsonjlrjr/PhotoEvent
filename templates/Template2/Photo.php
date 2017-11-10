@@ -1,6 +1,6 @@
 <?php
 
-namespace Templates\Template1;
+namespace Templates\Template2;
 
 
 use App\Model\Photo\Template\AbstractPhotoTemplate;

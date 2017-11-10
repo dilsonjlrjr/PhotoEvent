@@ -45,9 +45,19 @@ class PhotoController extends AbstractController
     /**
      * @param Request $request
      * @param Response $response
+     * @return mixed
+     * @Get(name="/instagram", alias="photoevent.photo.instagram")
+     */
+    public function instagramAction(Request $request, Response $response) {
+        return $this->view->render($response, 'Photo/instagram.twig', $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
      * @return Response
      * @throws \Exception
-     * @Post(name="/crop", alias="photoevent.photo.crop")
+     * @Post(name="/upload/crop", alias="photoevent.photo.crop")
      */
     public function cropAction(Request $request, Response $response) {
 
@@ -74,9 +84,28 @@ class PhotoController extends AbstractController
      * @param Response $response
      * @return Response
      * @throws \Exception
+     * @Post(name="/noupload/crop", alias="photoevent.photo.noupload.crop")
+     */
+    public function noUploadCropAction(Request $request, Response $response) {
+        $listTemplate = new ListTemplate();
+
+        $photo = file_get_contents($request->getParam('file-input-photo'));
+        $base64 = new ImageBase64();
+
+        $this->setAttributeView('photobase64', $base64->castBinary($photo));
+        $this->setAttributeView('arrayTemplate', $listTemplate->getAll());
+
+        return $this->view->render($response, 'Photo/crop.twig', $this->getAttributeView());
+    }
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     * @throws \Exception
      * @Post(name="/make", alias="photoevent.photo.make")
      */
-    public function makeAction(REquest $request, Response $response) {
+    public function makeAction(Request $request, Response $response) {
 
         $classTemplate = $request->getParam("option-template");
         $imageBase64 = $request->getParam("image");

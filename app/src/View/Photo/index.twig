@@ -7,13 +7,18 @@
 
     <div class="row center">
         <h5 class="header col s12 light">
-            Selecione uma foto do seu computador, no formato jpeg ou png.
+            Selecione uma foto para aplicar a moldura, a partir:
         </h5>
     </div>
     <div class="row center">
         <a href="#" id="download-button"
            class="btn-large waves-effect waves-light orange">
-            <i class="fa fa-camera left"></i> Selecionar foto
+            <i class="fa fa-camera left"></i> Do Computador
+        </a>
+
+        <a href="{{ path_for('photoevent.photo.instagram') }}" id="instagram-button"
+           class="btn-large waves-effect waves-light orange">
+            <i class="fa fa-instagram left"></i> De uma Hashtag no Instagram
         </a>
     </div>
 
